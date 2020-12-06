@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "143625393681",
+    "project_id": "wiredbraincoffee-a1386",
+    "storage_bucket": "wiredbraincoffee-a1386.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143625393681:android:57eb27369944c0f92343b0",
+        "android_client_info": {
+          "package_name": "io.wiredbraincoffee.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "143625393681-4t7dc0h0rhf8rmujs0r27m83q3t4kmqt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.wiredbraincoffee.app",
+            "certificate_hash": "ee1b68c7ef29d9fa3a1b6a9807aad9b53fdfdf20"
+          }
+        },
+        {
+          "client_id": "143625393681-e6mistrn64u8vctpbesejqcj5l5iafba.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCD4rp4hl5eTF0dbLx4wgRcJq7LKmA5ldM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "143625393681-e6mistrn64u8vctpbesejqcj5l5iafba.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

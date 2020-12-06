@@ -1,0 +1,41 @@
+name: error_reporting_features_in_a_flutter_app
+description: Project by majid Hajian
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.10.4 <3.0.0'
+  flutter: '>=1.22.4 <2.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.0
+  flutter_spinkit: ^4.1.2+1
+  font_awesome_flutter: ^8.8.1
+  flutter_svg: ^0.18.1
+  sentry: '>=3.0.0 <4.0.0'
+  device_info_plus: ^0.5.0
+  package_info_plus: ^0.5.0
+  firebase_core: "0.5.3"
+  firebase_crashlytics: "^0.2.4"
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: fonts/Raleway-Medium.ttf
+    - family: MyFlutterApp
+      fonts:
+        - asset: fonts/MyFlutterApp.ttf
