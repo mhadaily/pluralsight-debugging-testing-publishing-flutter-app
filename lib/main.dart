@@ -5,6 +5,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 import 'coffee_router.dart';
+import 'data_providers/auth_data_provider.dart';
+import 'data_providers/auth_provider.dart';
 import 'screens/get_theme.dart';
 import 'screens/splash_screen.dart';
 
@@ -21,17 +23,19 @@ Future<void> main() async {
   // Flutter >= 1.17 and Dart >= 2.8
   runZonedGuarded<Future<void>>(() async {
     runApp(
-      MaterialApp(
-        debugShowCheckedModeBanner: false,
-        themeMode: ThemeMode.system,
-        home: const SplashScreen(),
-        navigatorKey: CoffeeRouter.instance.navigatorKey,
-        theme: getTheme(),
+      AuthProvider(
+        auth: AuthDataProvider(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          themeMode: ThemeMode.system,
+          home: const SplashScreen(),
+          navigatorKey: CoffeeRouter.instance.navigatorKey,
+          theme: getTheme(),
+        ),
       ),
     );
 
     await Firebase.initializeApp();
-    
   }, (error, stackTrace) async {
     print('Caught Dart Error!');
     if (isInDebugMode) {

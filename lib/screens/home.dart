@@ -19,6 +19,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final loginScaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: FlatButton(
                       padding: EdgeInsets.fromLTRB(55, 15, 55, 15),
                       onPressed: () {
-                        CoffeeRouter.instance.push(LoginScreen.route());
+                        CoffeeRouter.instance.push(LoginScreen.route(loginScaffoldKey));
                       },
                       child: Text(
                         "Register",
@@ -66,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 OutlineButton(
                   padding: EdgeInsets.fromLTRB(60, 15, 60, 15),
                   onPressed: () {
-                    CoffeeRouter.instance.push(LoginScreen.route());
+                    CoffeeRouter.instance.push(LoginScreen.route(loginScaffoldKey));
                   },
                   child: Text(
                     "Log In",

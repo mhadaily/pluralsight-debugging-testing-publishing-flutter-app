@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Coffee {
-  IconData coffeeIcon;
-  String name;
-  int price;
-
-  Coffee({
+  const Coffee({
     this.coffeeIcon,
     this.name,
     this.price,
   });
+
+  final IconData coffeeIcon;
+  final String name;
+  final int price;
 }

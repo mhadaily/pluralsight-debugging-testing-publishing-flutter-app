@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../coffee_router.dart';
+import '../const.dart' hide coffees;
+import './menu_detail.dart';
 import '../models/coffee.dart';
-import '../const.dart';
-import 'menu_detail.dart';
 
 class MenuList extends StatelessWidget {
   const MenuList({

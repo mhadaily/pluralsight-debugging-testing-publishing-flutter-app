@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:error_reporting_features_in_a_flutter_app/models/coffee.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../models/coffee.dart';
 import '../const.dart';
 
 class MenuDetails extends StatefulWidget {

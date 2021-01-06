@@ -1,8 +1,8 @@
-import 'package:error_reporting_features_in_a_flutter_app/const.dart';
-import 'package:error_reporting_features_in_a_flutter_app/screens/logout.dart';
 import 'package:flutter/material.dart';
 
-import 'menu_list.dart';
+import '../screens/logout.dart';
+import '../const.dart';
+import './menu_list.dart';
 
 class MenuScreen extends StatefulWidget {
   static String routeName = 'menuScreen';
@@ -40,11 +40,7 @@ class _MenuScreenState extends State<MenuScreen> {
           ),
         ],
       ),
-      body: _selectedIndex == 3
-          ? LogoutScreen()
-          : MenuList(
-              coffees: coffees,
-            ),
+      body: _selectedIndex == 3 ? LogoutScreen() : MenuList(coffees: coffees),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
         unselectedItemColor: Colors.brown.shade300,
