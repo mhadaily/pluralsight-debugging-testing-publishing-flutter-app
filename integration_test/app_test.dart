@@ -1,3 +1,4 @@
+import 'package:error_reporting_features_in_a_flutter_app/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -45,10 +46,10 @@ void main() {
           await tester.tap(loginButton);
           await tester.pumpAndSettle(Duration(seconds: 10));
 
-          // expect(
-          //   find.byWidgetPredicate((widget) => widget is IntroPage),
-          //   findsOneWidget,
-          // );
+          expect(
+            find.byWidgetPredicate((widget) => widget is LoginScreen),
+            findsOneWidget,
+          );
         },
       );
     },
