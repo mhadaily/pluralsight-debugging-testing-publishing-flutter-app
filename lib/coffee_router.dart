@@ -18,7 +18,7 @@ class CoffeeRouter {
   static CoffeeRouter get instance => _router;
 
   /// Key so we can navigate without context.
-  GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   /// Setup intial route name
   String initialRoute = SplashScreen.routeName;

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:error_reporting_features_in_a_flutter_app/data_providers/http_client.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -24,7 +25,7 @@ Future<void> main() async {
   runZonedGuarded<Future<void>>(() async {
     runApp(
       AuthProvider(
-        auth: AuthDataProvider(),
+        auth: AuthDataProvider(http: HttpClient()),
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           themeMode: ThemeMode.system,

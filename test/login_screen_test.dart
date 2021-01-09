@@ -2,25 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import '../lib/data_providers/auth_data_provider.dart';
-import '../lib/coffee_router.dart';
 import '../lib/screens/login.dart';
-import '../lib/data_providers/auth_provider.dart';
 import '../lib/screens/menu.dart';
+import 'test_widget_wrapper.dart';
 
 class MockAuthDataProvider extends Mock implements BaseAuth {}
 
 void main() {
   final loginScaffoldKey = GlobalKey<ScaffoldState>();
-
-  Widget makeTestableWidget({Widget child, BaseAuth auth}) {
-    return AuthProvider(
-      auth: auth,
-      child: MaterialApp(
-        home: child,
-        navigatorKey: CoffeeRouter.instance.navigatorKey,
-      ),
-    );
-  }
 
   group('LoginPage', () {
     test('should throw AssertionError when scaffoldKey is null', () {
@@ -31,7 +20,6 @@ void main() {
         throwsAssertionError,
       );
     });
-
 
     testWidgets('should render', (WidgetTester tester) async {
       LoginScreen page = LoginScreen(

@@ -56,7 +56,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: FlatButton(
                       padding: EdgeInsets.fromLTRB(55, 15, 55, 15),
                       onPressed: () {
-                        CoffeeRouter.instance.push(LoginScreen.route(loginScaffoldKey));
+                        CoffeeRouter.instance.push(
+                          LoginScreen.route(loginScaffoldKey),
+                        );
                       },
                       child: Text(
                         "Register",
@@ -65,9 +67,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: darkBrown,
                     )),
                 OutlineButton(
+                  key: Key('homeLoginButton'),
                   padding: EdgeInsets.fromLTRB(60, 15, 60, 15),
                   onPressed: () {
-                    CoffeeRouter.instance.push(LoginScreen.route(loginScaffoldKey));
+                    Navigator.of(context).push(
+                      LoginScreen.route(loginScaffoldKey),
+                    );
                   },
                   child: Text(
                     "Log In",

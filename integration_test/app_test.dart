@@ -1,57 +1,49 @@
-import 'package:error_reporting_features_in_a_flutter_app/screens/login.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import '../lib/main.dart' as app;
+import '../lib/main_test.dart' as app;
+import '../lib/screens/login.dart';
+import '../lib/screens/splash_screen.dart';
+import '../lib/screens/menu.dart';
 
 void main() {
-  final IntegrationTestWidgetsFlutterBinding binding =
-      IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets(
-    "Should login and see menu",
+    "Loading -> tab login button -> enter correct username password -> see MenuScreen",
     (WidgetTester tester) async {
       app.main();
 
-      await binding.traceAction(
-        () async {
-          await tester.pumpAndSettle();
-          expect(
-            find.byWidgetPredicate(
-                (Widget widget) => widget is SpinKitFadingCircle),
-            findsOneWidget,
-          );
-          await tester.pumpAndSettle(const Duration(seconds: 3));
-          final loginFinder = find.byWidgetPredicate(
-            (widget) =>
-                widget is RaisedButton &&
-                widget.child is Text &&
-                (widget.child as Text).data.startsWith('Login'),
-          );
-          expect(loginFinder, findsOneWidget);
-          await tester.tap(loginFinder);
-          await tester.pumpAndSettle();
-          final emailField = find.byKey(Key("email-field"));
-          expect(emailField, findsOneWidget);
-          await tester.tap(emailField);
-          await tester.enterText(emailField, "test2@testmail.com");
-          final passwordField = find.byKey(Key("password-field"));
-          expect(passwordField, findsOneWidget);
-          await tester.tap(passwordField);
-          await tester.enterText(passwordField, "testtest");
-          await tester.pump();
-          final loginButton = find.byKey(Key("login-button"));
-          expect(loginButton, findsOneWidget);
-          await tester.tap(loginButton);
-          await tester.pumpAndSettle(Duration(seconds: 10));
+      await tester.pump();
 
-          expect(
-            find.byWidgetPredicate((widget) => widget is LoginScreen),
-            findsOneWidget,
-          );
-        },
-      );
+      expect(find.byType(SplashScreen), findsOneWidget);
+
+      await tester.pumpAndSettle(const Duration(seconds: 3));
+
+      final homeLoginButton = find.byKey(Key('homeLoginButton'));
+
+      expect(homeLoginButton, findsOneWidget);
+
+      await tester.tap(homeLoginButton);
+
+      await tester.pumpAndSettle();
+
+      expect(find.byType(LoginScreen), findsOneWidget);
+
+      Finder emailField = find.byKey(Key('email'));
+      expect(emailField, findsOneWidget);
+      await tester.enterText(emailField, 'email');
+
+      Finder passwordField = find.byKey(Key('password'));
+      expect(passwordField, findsOneWidget);
+      await tester.enterText(passwordField, 'password');
+
+      await tester.tap(find.byKey(Key('signIn')));
+
+      await tester.pumpAndSettle(Duration(seconds: 5));
+
+      expect(find.byType(SnackBar), findsNothing);
+      expect(find.byType(MenuScreen), findsOneWidget);
     },
   );
 }
