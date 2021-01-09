@@ -35,7 +35,7 @@ main() {
       });
 
       tearDown(() {
-        // cleaning up before each test
+        // cleaning up after each test
       });
 
       test('should return true with correct username and password', () async {
