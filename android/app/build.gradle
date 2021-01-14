@@ -50,8 +50,6 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
         }
     }
@@ -67,7 +65,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics:17.3.0'
 
     testImplementation 'junit:junit:4.12'
-    // https://developer.android.com/jetpack/androidx/releases/test/#1.2.0
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
