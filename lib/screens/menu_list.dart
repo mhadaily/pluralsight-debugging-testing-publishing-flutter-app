@@ -5,6 +5,15 @@ import '../models/coffee.dart';
 import '../const.dart';
 import 'menu_detail.dart';
 
+/// Find the nth term in the Fibonacci sequence
+int fib(int n) {
+  if (n < 2) {
+    //base case
+    return n;
+  }
+  return fib(n - 2) + fib(n - 1); //recursive case
+}
+
 class MenuList extends StatelessWidget {
   const MenuList({
     @required this.coffees,
@@ -26,7 +35,7 @@ class MenuList extends StatelessWidget {
           child: ListTile(
             contentPadding: EdgeInsets.all(15),
             title: Text(
-              coffees[index].name,
+              '${coffees[index].name} ${index == 15 ? fib(30) : ''} ',
               style: TextStyle(color: Colors.brown.shade800),
             ),
             leading: Icon(coffees[index].coffeeIcon, size: 40, color: brown),

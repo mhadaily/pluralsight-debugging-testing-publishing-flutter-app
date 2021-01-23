@@ -31,7 +31,6 @@ Future<void> main() async {
     );
 
     await Firebase.initializeApp();
-    
   }, (error, stackTrace) async {
     print('Caught Dart Error!');
     if (isInDebugMode) {

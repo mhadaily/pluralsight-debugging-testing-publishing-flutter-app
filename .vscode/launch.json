@@ -5,8 +5,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "pluralsight-debugging-testing-publishing-flutter-app",
+      "name": "Flutter Debug",
       "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug"
+    },
+    {
+      "name": "Flutter Profile",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "Flutter Attach",
+      "request": "attach",
       "type": "dart"
     }
   ]

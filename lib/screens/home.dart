@@ -7,6 +7,7 @@ import 'login.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = 'homeScreen';
+
   static Route<HomeScreen> route() {
     return MaterialPageRoute<HomeScreen>(
       settings: RouteSettings(name: routeName),
@@ -38,14 +39,24 @@ class _HomeScreenState extends State<HomeScreen> {
               semanticsLabel: 'Wire Brain Coffee',
               fit: BoxFit.fitWidth,
             ),
-            Text(
-              "Get the best coffee!",
-              style: TextStyle(
-                  fontFamily: 'Raleway',
-                  fontSize: 30,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.brown),
-              textAlign: TextAlign.center,
+            SizedBox(
+              width: 200,
+              child: Row(
+                children: [
+                  Flexible(
+                    child: Text(
+                      "Get the best coffee!",
+                      style: TextStyle(
+                        fontFamily: 'Raleway',
+                        fontSize: 30,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.brown,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
