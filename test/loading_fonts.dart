@@ -52,7 +52,7 @@ String derivedFontFamily(Map<String, dynamic> fontDefinition) {
   } else {
     for (final Map<String, dynamic> fontType in fontDefinition['fonts']) {
       final String asset = fontType['asset'];
-      if (asset?.startsWith('fonts') ?? false) {
+      if (asset.startsWith('fonts')) {
         return 'fonts/$fontFamily';
       }
     }

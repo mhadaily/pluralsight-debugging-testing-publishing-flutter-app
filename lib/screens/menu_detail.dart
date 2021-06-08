@@ -7,10 +7,10 @@ import '../models/coffee.dart';
 import '../const.dart';
 
 class MenuDetails extends StatefulWidget {
-  const MenuDetails({this.coffee});
+  const MenuDetails({required this.coffee});
 
   static String routeName = 'loginScreen';
-  static Route<MenuDetails> route({Coffee coffee}) {
+  static Route<MenuDetails> route({required Coffee coffee}) {
     return MaterialPageRoute<MenuDetails>(
       settings: RouteSettings(name: routeName),
       builder: (BuildContext context) => MenuDetails(

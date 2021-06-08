@@ -1,15 +1,15 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
+import 'package:mocktail/mocktail.dart';
 
 import '../lib/data_providers/auth_data_provider.dart';
 import '../lib/data_providers/http_client.dart';
 
-class MockHttpClient extends Mock implements HttpClient {}
+class MockHttpClient extends Mock implements CoffeeHttpClient {}
 
 main() {
-  HttpClient mockHttpClient;
-  AuthDataProvider authDataProvider;
+  late CoffeeHttpClient mockHttpClient;
+  late AuthDataProvider authDataProvider;
 
   setUpAll(() {
     mockHttpClient = MockHttpClient();
@@ -20,14 +20,12 @@ main() {
 
   tearDownAll(() {
     // usually for cleaning up
-    mockHttpClient = null;
-    authDataProvider = null;
   });
 
   group('DataProvider', () {
     group('SignInWithPasswordUsername', () {
       setUp(() {
-        when(mockHttpClient.post(any, any)).thenAnswer(
+        when(() => mockHttpClient.post(any(), any())).thenAnswer(
           (realInvocation) => Future.value(
             http.Response('success', 200),
           ),
@@ -63,7 +61,7 @@ main() {
 
     group('signOut', () {
       setUp(() {
-        when(mockHttpClient.get(any)).thenAnswer(
+        when(() => mockHttpClient.get(any())).thenAnswer(
           (realInvocation) => Future.value(
             http.Response('success', 200),
           ),

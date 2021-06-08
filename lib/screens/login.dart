@@ -40,11 +40,13 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       key: widget.scaffoldKey,
       appBar: AppBar(
-        title: Text("Login"),
+        title: Text(
+          "Login",
+          semanticsLabel: 'logo',
+        ),
         actions: [
           Image.asset(
             "assets/wired-brain-coffee-logo.png",
-            semanticLabel: 'logo',
             fit: BoxFit.fitWidth,
           ),
         ],
@@ -192,15 +194,21 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   bool _isFormValidated() {
-    final FormState form = formKey.currentState;
-    return form.validate();
+    final FormState? form = formKey.currentState;
+    if (form != null) {
+      return form.validate();
+    }
+    return false;
   }
 
   _onSubmitLoginButton() async {
     if (_isFormValidated()) {
       widget.scaffoldKey.currentState.showSnackBar(_loadingSnackBar());
 
-      final BaseAuth auth = AuthProvider.of(context).auth;
+      final BaseAuth? auth = AuthProvider.of(context)?.auth;
+      if (auth == null) {
+        return;
+      }
       final String email = _emailFieldController.text;
       final String password = _passwordFieldController.text;
       final bool loggedIn = await auth.signInWithEmailAndPassword(

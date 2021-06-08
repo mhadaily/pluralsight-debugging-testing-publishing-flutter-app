@@ -5,21 +5,21 @@ import 'package:http/http.dart';
 import 'http_client.dart';
 
 abstract class BaseAuth {
-  Future<bool> signInWithEmailAndPassword(String email, String password);
+  Future<bool> signInWithEmailAndPassword(String? email, String? password);
   Future<bool> signOut();
 }
 
 class AuthDataProvider implements BaseAuth {
   const AuthDataProvider({
-    this.http,
+    required this.http,
   });
 
-  final HttpClient http;
+  final CoffeeHttpClient http;
 
   @override
   Future<bool> signInWithEmailAndPassword(
-    String email,
-    String password,
+    String? email,
+    String? password,
   ) async {
     final String body = jsonEncode({email: email, password: password});
     final Response res = await http.post('API_ENDPOINT', body);

@@ -9,7 +9,7 @@ import 'screens/splash_screen.dart';
 void main() {
   runApp(
     AuthProvider(
-      auth: AuthDataProvider(http: HttpClient()),
+      auth: AuthDataProvider(http: CoffeeHttpClient()),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.system,

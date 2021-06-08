@@ -6,9 +6,12 @@ import './menu_detail.dart';
 import '../models/coffee.dart';
 
 class MenuList extends StatelessWidget {
+  // const MenuList({
+  //   @required this.coffees,
+  // }) : assert(coffees != null);
   const MenuList({
-    @required this.coffees,
-  }) : assert(coffees != null);
+    required this.coffees,
+  });
 
   final List<Coffee> coffees;
 

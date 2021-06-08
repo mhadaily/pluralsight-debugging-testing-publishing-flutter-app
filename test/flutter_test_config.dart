@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'loading_fonts.dart';
 
-Future<void> main(FutureOr<void> testMain()) async {
+Future<void> testExecutable(FutureOr<void> Function() testMain) async {
   print('Test -> flutter_test_config.dart');
   await loadAppFonts();
 

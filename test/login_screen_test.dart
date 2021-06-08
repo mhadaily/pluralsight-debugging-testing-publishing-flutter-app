@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import '../lib/data_providers/auth_data_provider.dart';
 import '../lib/screens/login.dart';
 import '../lib/screens/menu.dart';
@@ -66,7 +66,7 @@ void main() {
     testWidgets(
       'should show error if email is empty',
       (WidgetTester tester) async {
-        MockAuthDataProvider mockAuth = MockAuthDataProvider();
+        final MockAuthDataProvider mockAuth = MockAuthDataProvider();
 
         LoginScreen page = LoginScreen(
           scaffoldKey: loginScaffoldKey,
@@ -78,7 +78,7 @@ void main() {
 
         await tester.tap(find.byKey(Key('signIn')));
 
-        verifyNever(mockAuth.signInWithEmailAndPassword('', 'password'));
+        verifyNever(() => mockAuth.signInWithEmailAndPassword('', 'password'));
 
         await tester.pump();
 
@@ -104,7 +104,7 @@ void main() {
 
         await tester.tap(find.byKey(Key('signIn')));
 
-        verifyNever(mockAuth.signInWithEmailAndPassword('email', ''));
+        verifyNever(() => mockAuth.signInWithEmailAndPassword('email', ''));
 
         await tester.pump();
 
@@ -135,7 +135,7 @@ void main() {
         await tester.enterText(passwordField, 'incorrectpassword');
 
         when(
-          mockAuth.signInWithEmailAndPassword(any, any),
+          () => mockAuth.signInWithEmailAndPassword(any(), any()),
         ).thenAnswer(
           (realInvocation) => Future.value(false),
         );
@@ -153,15 +153,19 @@ void main() {
       (WidgetTester tester) async {
         MockAuthDataProvider mockAuth = MockAuthDataProvider();
 
-        when(mockAuth.signInWithEmailAndPassword('email', 'password'))
+        when(() => mockAuth.signInWithEmailAndPassword('email', 'password'))
             .thenAnswer((invocation) => Future.value(true));
 
         LoginScreen page = LoginScreen(
           scaffoldKey: loginScaffoldKey,
         );
 
-        await tester
-            .pumpWidget(makeTestableWidget(child: page, auth: mockAuth));
+        await tester.pumpWidget(
+          makeTestableWidget(
+            child: page,
+            auth: mockAuth,
+          ),
+        );
 
         Finder emailField = find.byKey(Key('email'));
         await tester.enterText(emailField, 'email');
@@ -170,9 +174,9 @@ void main() {
         await tester.enterText(passwordField, 'password');
 
         when(
-          mockAuth.signInWithEmailAndPassword(
-            any,
-            any,
+          () => mockAuth.signInWithEmailAndPassword(
+            any(),
+            any(),
           ),
         ).thenAnswer(
           (realInvocation) => Future.value(true),

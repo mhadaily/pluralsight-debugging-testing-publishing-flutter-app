@@ -5,16 +5,17 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:sentry/sentry.dart';
 
 final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-final PackageInfo packageInfo = PackageInfo();
+// final PackageInfo packageInfo = PackageInfo();
 
-Future<Event> getSentryEnvEvent(
+Future<SentryEvent> getSentryEnvEvent(
   dynamic exception,
-  StackTrace stackTrace,
 ) async {
-  /// return Event with IOS extra information to send it to Sentry
+  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+  /// return SentryEvent with IOS extra information to send it to Sentry
   if (Platform.isIOS) {
     final IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
-    return Event(
+    return SentryEvent(
       release: packageInfo.version,
       environment: 'production', // replace it as it's desired
       tags: {
@@ -31,14 +32,13 @@ Future<Event> getSentryEnvEvent(
         'isPhysicalDevice': iosDeviceInfo.isPhysicalDevice,
       },
       exception: exception,
-      stackTrace: stackTrace,
     );
   }
 
-  /// return Event with Andriod extra information to send it to Sentry
+  /// return SentryEvent with Andriod extra information to send it to Sentry
   if (Platform.isAndroid) {
     final AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
-    return Event(
+    return SentryEvent(
       release: packageInfo.version,
       environment: 'production', // replace it as it's desired
       tags: {
@@ -62,18 +62,16 @@ Future<Event> getSentryEnvEvent(
         'isPhysicalDevice': androidDeviceInfo.isPhysicalDevice,
       },
       exception: exception,
-      stackTrace: stackTrace,
     );
   }
 
   /// Return standard Error in case of non-specifed paltform
   ///
   /// if there is no detected platform,
-  /// just return a normal event with no extra information
-  return Event(
+  /// just return a normal SentryEvent with no extra information
+  return SentryEvent(
     release: '${packageInfo.version}-${packageInfo.buildNumber}',
     environment: 'production',
     exception: exception,
-    stackTrace: stackTrace,
   );
 }
