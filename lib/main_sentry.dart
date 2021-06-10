@@ -15,7 +15,7 @@ bool get isInDebugMode {
 }
 
 void main() {
-  // Flutter >= 1.17 and Dart >= 2.8
+  // Flutter >= 2 and Dart >= 2.12
   runZonedGuarded<Future<void>>(() async {
     await Sentry.init(
       (options) {

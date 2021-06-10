@@ -155,15 +155,19 @@ class _LoginScreenState extends State<LoginScreen> {
         children: <Widget>[
           ClipRRect(
               borderRadius: BorderRadius.circular(25),
-              child: FlatButton(
+              child: TextButton(
+                style: ButtonStyle(
+                  padding: MaterialStateProperty.all(
+                    EdgeInsets.fromLTRB(55, 15, 55, 15),
+                  ),
+                  backgroundColor: MaterialStateProperty.all(darkBrown),
+                ),
                 key: Key('signIn'),
-                padding: EdgeInsets.fromLTRB(55, 15, 55, 15),
                 onPressed: _onSubmitLoginButton,
                 child: Text(
                   "Log In",
                   style: TextStyle(color: Colors.white),
                 ),
-                color: darkBrown,
               )),
         ],
       ),

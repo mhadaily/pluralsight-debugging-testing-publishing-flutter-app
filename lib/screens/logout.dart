@@ -38,7 +38,7 @@ class _LogoutScreenState extends State<LogoutScreen> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: OutlineButton(
+          child: OutlinedButton(
             onPressed: () {
               CoffeeRouter.instance.push(HomeScreen.route());
             },

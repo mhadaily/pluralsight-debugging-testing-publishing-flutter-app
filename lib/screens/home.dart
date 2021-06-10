@@ -53,8 +53,13 @@ class _HomeScreenState extends State<HomeScreen> {
               children: <Widget>[
                 ClipRRect(
                     borderRadius: BorderRadius.circular(25),
-                    child: FlatButton(
-                      padding: EdgeInsets.fromLTRB(55, 15, 55, 15),
+                    child: TextButton(
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all(
+                          EdgeInsets.fromLTRB(55, 15, 55, 15),
+                        ),
+                        backgroundColor: MaterialStateProperty.all(darkBrown),
+                      ),
                       onPressed: () {
                         CoffeeRouter.instance.push(
                           LoginScreen.route(loginScaffoldKey),
@@ -64,11 +69,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         "Register",
                         style: TextStyle(color: Colors.white),
                       ),
-                      color: darkBrown,
                     )),
-                OutlineButton(
+                OutlinedButton(
                   key: Key('homeLoginButton'),
-                  padding: EdgeInsets.fromLTRB(60, 15, 60, 15),
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all(
+                      EdgeInsets.fromLTRB(60, 15, 60, 15),
+                    ),
+                    shape: MaterialStateProperty.all(StadiumBorder()),
+                    side: MaterialStateProperty.all(
+                      BorderSide(color: darkBrown),
+                    ),
+                  ),
                   onPressed: () {
                     Navigator.of(context).push(
                       LoginScreen.route(loginScaffoldKey),
@@ -78,8 +90,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     "Log In",
                     style: TextStyle(color: darkBrown),
                   ),
-                  borderSide: BorderSide(color: darkBrown),
-                  shape: StadiumBorder(),
                 ),
               ],
             ),

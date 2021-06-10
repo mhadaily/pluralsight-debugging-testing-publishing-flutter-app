@@ -260,8 +260,14 @@ class _MenuDetailsState extends State<MenuDetails> {
                     children: <Widget>[
                       ClipRRect(
                         borderRadius: BorderRadius.circular(25),
-                        child: FlatButton(
-                          padding: EdgeInsets.fromLTRB(55, 15, 55, 15),
+                        child: TextButton(
+                          style: ButtonStyle(
+                            padding: MaterialStateProperty.all(
+                              EdgeInsets.fromLTRB(55, 15, 55, 15),
+                            ),
+                            backgroundColor:
+                                MaterialStateProperty.all(darkBrown),
+                          ),
                           onPressed: () {
                             exit(0); // force app to close
                             // throw Exception('this is dart crash');
@@ -270,7 +276,6 @@ class _MenuDetailsState extends State<MenuDetails> {
                             "Add to cart",
                             style: TextStyle(color: Colors.white),
                           ),
-                          color: darkBrown,
                         ),
                       ),
                     ],
