@@ -154,21 +154,22 @@ class _LoginScreenState extends State<LoginScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           ClipRRect(
-              borderRadius: BorderRadius.circular(25),
-              child: TextButton(
-                style: ButtonStyle(
-                  padding: MaterialStateProperty.all(
-                    EdgeInsets.fromLTRB(55, 15, 55, 15),
-                  ),
-                  backgroundColor: MaterialStateProperty.all(darkBrown),
+            borderRadius: BorderRadius.circular(25),
+            child: TextButton(
+              style: ButtonStyle(
+                padding: MaterialStateProperty.all(
+                  EdgeInsets.fromLTRB(55, 15, 55, 15),
                 ),
-                key: Key('signIn'),
-                onPressed: _onSubmitLoginButton,
-                child: Text(
-                  "Log In",
-                  style: TextStyle(color: Colors.white),
-                ),
-              )),
+                backgroundColor: MaterialStateProperty.all(darkBrown),
+              ),
+              key: Key('signIn'),
+              onPressed: _onSubmitLoginButton,
+              child: Text(
+                "Log In",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
         ],
       ),
       SizedBox(height: 15),

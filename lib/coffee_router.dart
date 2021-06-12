@@ -47,7 +47,7 @@ class CoffeeRouter {
   }
 
   void pop() {
-    navigatorKey.currentState?.pop();
+    navigatorKey.currentState!.pop();
   }
 
   void popUntil(String route) {
