@@ -40,7 +40,7 @@ void main() {
       print('$stackTrace');
     } else {
       // report to a error tracking system in production
-      await Sentry.captureException(error, stackTrace: stackTrace);
+      // await Sentry.captureException(error, stackTrace: stackTrace);
       final SentryEvent event = await getSentryEnvEvent(error);
       Sentry.captureEvent(event, stackTrace: stackTrace);
     }
