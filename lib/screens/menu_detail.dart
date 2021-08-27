@@ -88,8 +88,16 @@ class _MenuDetailsState extends State<MenuDetails> {
                             ),
                           ),
                           SizedBox(width: 20),
-                          OutlineButton(
-                            borderSide: BorderSide(color: Colors.grey.shade600),
+                          OutlinedButton(
+                            style: ButtonStyle(
+                              padding: MaterialStateProperty.all(
+                                EdgeInsets.all(0),
+                              ),
+                              shape: MaterialStateProperty.all(StadiumBorder()),
+                              side: MaterialStateProperty.all(
+                                BorderSide(color: Colors.grey.shade600),
+                              ),
+                            ),
                             onPressed: () async {
                               // throw new StateError('This is a Dart exception.');
                               foo() async {
@@ -101,27 +109,20 @@ class _MenuDetailsState extends State<MenuDetails> {
                               await foo();
                             },
                             child: Icon(Icons.remove),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(30),
-                                bottomLeft: Radius.circular(30),
-                              ),
-                            ),
                           ),
                           SizedBox(width: 7),
-                          OutlineButton(
-                            padding: EdgeInsets.all(0),
-                            onPressed: () {},
-                            child: Icon(Icons.add),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                bottomRight: Radius.circular(30),
-                                topRight: Radius.circular(30),
+                          OutlinedButton(
+                            style: ButtonStyle(
+                              padding: MaterialStateProperty.all(
+                                EdgeInsets.all(0),
+                              ),
+                              shape: MaterialStateProperty.all(StadiumBorder()),
+                              side: MaterialStateProperty.all(
+                                BorderSide(color: Colors.grey.shade600),
                               ),
                             ),
-                            borderSide: BorderSide(
-                              color: Colors.grey.shade600,
-                            ),
+                            onPressed: () {},
+                            child: Icon(Icons.add),
                           ),
                         ],
                       ),
